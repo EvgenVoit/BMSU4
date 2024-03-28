@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация пользователя</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--    <link rel="stylesheet" href="form.css">-->
+</head>
+<body>
+
+
+<div class="login-box">
+    <h2>Регистрация пользователя</h2>
+    <form id="registrationForm">
+        <div class="user-box">
+            <label for="name">Имя пользователя:</label>
+            <input type="text" id="name" name="name" required><br><br>
+        </div>
+
+        <div class="user-box">
+
+            <label for="contactNumber">Телефон пользователя:</label>
+            <input type="tel" id="contactNumber" name="contactNumber" required><br><br>
+
+        </div>
+
+        <div class="user-box">
+            <label for="email">Email пользователя:</label>
+            <input type="email" id="email" name="email" required><br><br>
+        </div>
+
+        <div class="user-box">
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" required><br><br>
+        </div>
+
+        <div class="user-box">
+            <label for="status">Role:</label>
+            <input type="text" id="status" name="status" required><br><br>
+        </div>
+
+        <div class="user-box">
+            <label for="role">Status:</label>
+            <input type="text" id="role" name="role" required><br><br>
+        </div>
+
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+
+</div>
+
+
+<div id="registrationResult"></div>
+
+<script>
+    $(document).ready(function () {
+        $('#registrationForm').submit(function (event) {
+            event.preventDefault();
+
+            var name = $('#name').val();
+
+            var contactNumber = $('#contactNumber').val();
+
+            var email = $('#email').val();
+
+            var password = $('#password').val();
+
+            var status = $('#status').val();
+
+            var role = $('#role').val();
+
+            var requestData = {
+                name: name,
+                contactNumber: contactNumber,
+                email: email,
+                status: status,
+                role: role,
+                password: password,
+
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: '/user/signup',
+                contentType: 'application/json',
+                data: JSON.stringify(requestData),
+                success: function (response) {
+                    $('#registrationResult').text(response);
+                    window.location.href = "/users.html";
+                },
+                error: function (xhr, status, error) {
+                    $('#registrationResult').text('Ошибка регистрации: ' + xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
