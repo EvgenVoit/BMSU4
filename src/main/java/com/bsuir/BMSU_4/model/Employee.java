@@ -43,9 +43,9 @@ public class Employee {
     @Column(name = "joined_date")
     private String joinedDate;
 
-    @ManyToOne
-    @JoinColumn(name = "department_id")
-    private Department department;
+//    @ManyToOne
+//    @JoinColumn(name = "department_id")
+//    private Department department;
 
     @Column(name = "speciality")
     private String speciality;

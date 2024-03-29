@@ -35,9 +35,9 @@ public class EmployeeRestImpl implements EmployeeRest {
     }
 
     @Override
-    public String addEmployee(Employee employee, Integer departmentID) {
-        Department department = departmentService.findDepartmentById(departmentID);
-        employee.setDepartment(department);
+    public String addEmployee(Employee employee) {
+//        Department department = departmentService.findDepartmentById(departmentID);
+//        employee.setDepartment(department);
         employeeService.addEmployee(employee);
         return "Employee was added successfully!";
     }

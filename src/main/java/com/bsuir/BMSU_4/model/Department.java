@@ -27,8 +27,8 @@ public class Department {
     @Column(name = "department_phone")
     private String departmentPhone;
 
-    @OneToMany(mappedBy = "department")
-    private List<Employee> employees;
+//    @OneToMany(mappedBy = "department")
+//    private List<Employee> employees;
 
 
 }

@@ -19,7 +19,7 @@ public interface EmployeeRest {
     public String updateEmployee(@PathVariable Integer id, @RequestBody Employee employee);
 
     @PostMapping("/add-employee") //work
-    public String addEmployee(@RequestBody Employee employee, @RequestParam Integer departmentID);
+    public String addEmployee(@RequestBody Employee employee);
 
     @GetMapping("/getByEmail/{email}") //work
     public Employee getEmployeeByEmail(@PathVariable String email);
