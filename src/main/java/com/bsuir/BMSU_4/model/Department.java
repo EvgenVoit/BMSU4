@@ -2,10 +2,16 @@ package com.bsuir.BMSU_4.model;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "department")
 public class Department {
     @Id
@@ -20,6 +26,9 @@ public class Department {
 
     @Column(name = "department_phone")
     private String departmentPhone;
+
+    @OneToMany(mappedBy = "department")
+    private List<Employee> employees;
 
 
 }

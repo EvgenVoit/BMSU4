@@ -1,8 +1,10 @@
 package com.bsuir.BMSU_4.restImpl;
 
+import com.bsuir.BMSU_4.model.Department;
 import com.bsuir.BMSU_4.model.Employee;
 import com.bsuir.BMSU_4.model.User;
 import com.bsuir.BMSU_4.rest.EmployeeRest;
+import com.bsuir.BMSU_4.service.DepartmentService;
 import com.bsuir.BMSU_4.service.EmployeeService;
 import com.bsuir.BMSU_4.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ public class EmployeeRestImpl implements EmployeeRest {
     @Autowired
     private EmployeeService employeeService;
 
+    @Autowired
+    private DepartmentService departmentService;
+
     @Override
     public List<Employee> showAllEmployees() {
         return employeeService.showAllEmployees();
@@ -30,7 +35,9 @@ public class EmployeeRestImpl implements EmployeeRest {
     }
 
     @Override
-    public String addEmployee(Employee employee) {
+    public String addEmployee(Employee employee, Integer departmentID) {
+        Department department = departmentService.findDepartmentById(departmentID);
+        employee.setDepartment(department);
         employeeService.addEmployee(employee);
         return "Employee was added successfully!";
     }

@@ -1,12 +1,16 @@
 package com.bsuir.BMSU_4.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "employee")
 public class Employee {
 
@@ -39,8 +43,9 @@ public class Employee {
     @Column(name = "joined_date")
     private String joinedDate;
 
-    @Column(name = "department")
-    private String department;
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
 
     @Column(name = "speciality")
     private String speciality;

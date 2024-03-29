@@ -19,4 +19,6 @@ public interface EmployeeService {
 
     Object getAverageSalary();
     void deleteEmployee(Integer id);
+
+    Employee findEmployeeById(Integer id);
 }
